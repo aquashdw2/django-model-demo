@@ -13,13 +13,16 @@ function drawCenterMarker(map){
 let clickedMarkers = [];
 function addMapClickEvent(){
     naver.maps.Event.addListener(map, "click", (e) => {
-        console.log(e.coord);
-        drawNewMarker(map, e.coord.x, e.coord.y);
+        clickedMarkers.push(drawNewMarker(map, e.coord.x, e.coord.y));
     });
 }
 
 function reset(){
-    
+    clickedMarkers.forEach(marker => {
+        hideMarker(marker);
+    });
+    clickedMarkers.splice(0, clickedMarkers.length);
+    clickedMarkers.length = 0;
 }
 
 
