@@ -3,7 +3,8 @@ let zoom = 15;
 window.onload = onLoadActions;
 
 function onLoadActions() {
-    drawMap();
+    drawMap()
+    addMapClickEvent();
 }
 
 function drawMap(){

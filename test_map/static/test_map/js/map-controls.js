@@ -72,10 +72,10 @@ function addInfoWindowToMarker(marker, infoElement) {
         zIndex: 150,
     });
     infoWindowDefaultListener(marker, infoWindow);
+    return infoWindow;
 }
 
 function infoWindowDefaultListener(marker, infoWindow){
-    console.log(marker);
     naver.maps.Event.addListener(marker, "click", (e) => {
         if (infoWindow.getMap()) {
             infoWindow.close();
