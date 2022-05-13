@@ -10,12 +10,12 @@ function panEast(){
 
 function panNorth(){
     let height = document.getElementById("map").offsetHeight;
-    map.panBy(new naver.maps.Point(0, height));
+    map.panBy(new naver.maps.Point(0, -height));
 }
 
 function panSouth(){
     let height = document.getElementById("map").offsetHeight;
-    map.panBy(new naver.maps.Point(0, -height));
+    map.panBy(new naver.maps.Point(0, height));
 }
 
 function zoomOut(){
