@@ -18,6 +18,10 @@ function addMapClickEvent(){
     });
 }
 
+function reset(){
+    
+}
+
 
 function findInCookie(cookieName){
     return document.cookie.split(";")
