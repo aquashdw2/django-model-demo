@@ -25,6 +25,50 @@ function reset(){
     clickedMarkers.length = 0;
 }
 
+function sendSelectedPointsToServer(){
+    let payload = {
+        points: []
+    }
+    clickedMarkers.forEach(marker => {
+        let point = {
+            lat: marker.getPosition().x,
+            long: marker.getPosition().y,
+        }
+        payload.points.push(point);
+    });
+
+    fetch("/map/save-points/", {
+        method: "post",
+        headers: {
+            "X-CSRFToken": getCsrfToken(),
+        },
+        body: JSON.stringify(payload),
+    }).then(response => {
+        if(response.status != 200){
+            alert("저장에 실패 했습니다!");
+        } else {
+            alert("저장에 성공 했습니다!");
+        }
+    });
+}
+
+function getPoints(){
+    fetch("/map/get-points/")
+        .then(response => {
+            if (response.status == 200){
+                response.json().then((responseBody) => drawPoints(responseBody.points));
+            }
+        });
+}
+
+function drawPoints(pointList){
+    console.log(pointList);
+    pointList.forEach(point => {
+        console.log(point.lat);
+        console.log(drawNewMarker(map, point.lat, point.long));
+    });
+}
+
 
 function findInCookie(cookieName){
     return document.cookie.split(";")

@@ -5,6 +5,7 @@ window.onload = onLoadActions;
 function onLoadActions() {
     drawMap()
     addMapClickEvent();
+    // centerPosition();
 }
 
 function drawMap(){
@@ -15,4 +16,12 @@ function drawMap(){
     };
     
     map = new naver.maps.Map('map', mapOptions);
+    
 }
+
+
+// function centerPosition(){
+//     navigator.geolocation.getCurrentPosition((position) => {
+//         setCenter(position.coords.latitude, position.coords.longitude);
+//     });
+// }
