@@ -5,9 +5,9 @@ from delivery.models import *
 
 
 def test(request):
-    category_han = create_category("hansik")
-    category_bun = create_category("bunsik")
-    category_pun = create_category("pyunsik")
+    category_han = create_category("한식")
+    category_bun = create_category("중식")
+    category_pun = create_category("일식")
 
     area_sun = create_area("선릉")
     area_sam = create_area("삼성")
@@ -56,6 +56,17 @@ def test(request):
     return JsonResponse({
         "status": "success"
     })
+
+
+def prepare_test_data():
+    category_korea = create_category("한식")
+    category_china = create_category("중식")
+    category_japan = create_category("일식")
+    category_west = create_category("양식")
+
+    area_sun = create_area("선릉")
+    area_sam = create_area("삼성")
+    area_seo = create_area("서초")
 
 
 def create_diner(name):

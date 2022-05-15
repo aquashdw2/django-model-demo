@@ -8,6 +8,8 @@ class Diner(models.Model):
 
 class Area(models.Model):
     name = models.CharField(max_length=32)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     diners = models.ManyToManyField(
         Diner, 
         through="DeliveryArea",
