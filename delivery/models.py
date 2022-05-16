@@ -1,9 +1,11 @@
-from unicodedata import name
+import datetime
 from django.db import models
 
 
 class Diner(models.Model):
     name = models.CharField(max_length=32)
+    opens = models.TimeField(default=datetime.time(11, 00))
+    closes = models.TimeField(default=datetime.time(22, 00))
 
 
 class Area(models.Model):

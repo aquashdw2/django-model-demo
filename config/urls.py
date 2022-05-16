@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from delivery import views
+from django.http import JsonResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.test),
+    path("", lambda x: JsonResponse({})),
+    path("delivery/", include("delivery.urls")),
     path("map/", include("test_map.urls")),
 ]
