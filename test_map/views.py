@@ -14,6 +14,7 @@ def save_points(request):
         print(point)
     return JsonResponse({})
 
+
 def get_points(request):
     points = [
         {'lat': 127.0994768, 'long': 37.3599796},

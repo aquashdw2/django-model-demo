@@ -118,7 +118,7 @@ def prepare_test_data():
     set_diner_delivery_area_1(diner_da1.get("id"), area_daechi.get("id"))
     set_diner_delivery_area_1(diner_da1.get("id"), area_dogok.get("id"))
     diner_da2 = create_diner("미래향", close=datetime.time(23, 30))
-    set_diner_category(diner_da1.get("id"), category_china.get("id"))
+    set_diner_category(diner_da2.get("id"), category_china.get("id"))
     set_diner_delivery_area_1(diner_da2.get("id"), area_yeoksam.get("id"))
     set_diner_delivery_area_1(diner_da2.get("id"), area_samsung.get("id"))
     set_diner_delivery_area_1(diner_da2.get("id"), area_daechi.get("id"))
