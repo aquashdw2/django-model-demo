@@ -8,11 +8,23 @@ from delivery.models import *
 
 
 def diner_query(request):
-    queryset = Diner.objects.all()
+    if request.method == "POST":
+        return redirect("/delivery/diner/")
+    if request.method == "GET":
+        name = request.GET.get("name")
+        area = request.GET.get("area")
+        category = request.GET.get("category")
+        context = {}
+        queryset = Diner.objects.all()
+        if name is not None:
+            queryset = queryset.filter(name__contains=name)
+        if area is not None:
+            queryset = queryset.filter(deliver_area__name=area)
+        if category is not None:
+            queryset = queryset.filter(diner_categories__name=category)
 
-    return JsonResponse({
-        "results": list(queryset.values())
-    }, json_dumps_params={"ensure_ascii": False})
+        context["diners"] = queryset
+        return render(request, "delivery/diner.html", context)
 
 
 def test(request):
